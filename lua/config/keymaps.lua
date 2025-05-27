@@ -1,0 +1,24 @@
+local keymap = vim.keymap
+
+local opts = { noremap = true, silent = true }
+-- Directory Navigation
+keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
+
+-- Navigating panes
+keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+
+-- Window management
+keymap.set('n', '<leader>sv', ':vsplit<CR>', opts)
+keymap.set('n', '<leader>sh', ':split<CR>', opts)
+keymap.set('n', '<leader>sm', ':MaximizerToggle<CR>', opts)
+
+keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Indenting
+keymap.set('v', '<', '<gv')
+keymap.set('v', '>', '>gv')
