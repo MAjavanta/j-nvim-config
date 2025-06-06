@@ -18,7 +18,7 @@ opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "yes"
 opt.cursorline = true
-opt.scrolloff = 5
+opt.scrolloff = 7
 opt.colorcolumn = "110"
 
 opt.incsearch = true
