@@ -1,5 +1,8 @@
 local config = function()
 	require("nvim-treesitter.configs").setup({
+        modules = {},
+        ignore_install = {},
+        sync_install = false,
 		indent = {
 			enable = true,
 		},
@@ -13,7 +16,11 @@ local config = function()
 			"gitignore",
 			"dockerfile",
 			"c",
-			"html"
+			"html",
+            "javascript",
+            "typescript",
+            "tsx",
+            "css"
 		},
 		auto_install = true,
 		highlight = {
@@ -26,5 +33,5 @@ end
 return {
 	'nvim-treesitter/nvim-treesitter',
 	lazy = false,
-	config = config
+	config = config,
 }

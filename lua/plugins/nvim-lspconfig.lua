@@ -75,12 +75,43 @@ local config = function()
 		formatStdin = true,
 	}
 
+	local black = {
+		formatCommand = "black --quiet -",
+		formatStdin = true,
+	}
+
+	local ruff = {
+		lintCommand = "ruff check --quiet ${FILENAME}",
+		lintFormats = { "%f:%l:%c: %m" },
+		lintStdin = false,
+	}
+
+	local prettier = {
+		formatCommand = "prettier --stdin-filepath ${INPUT}",
+		formatStdin = true,
+	}
+
+	local eslint = {
+		lintCommand = "eslint -f unix --stdin --stdin-filename ${INPUT}",
+		lintStdin = true,
+		lintFormats = { "%f:%l:%c: %m" },
+	}
+
 	lspconfig.efm.setup({
 		filetypes = {
 			"lua",
 			"c",
 			"cpp",
+			"python",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"html",
+			"css",
+			"json",
 		},
+		on_attach = on_attach,
 		init_options = {
 			documentFormatting = true,
 			documentRangeFormatting = true,
@@ -94,6 +125,14 @@ local config = function()
 				lua = { luacheck, stylua },
 				c = { clangformat },
 				cpp = { clangformat },
+				python = { ruff, black },
+				javascript = { eslint, prettier },
+				javascriptreact = { eslint, prettier },
+				typescript = { eslint, prettier },
+				typescriptreact = { eslint, prettier },
+				html = { prettier },
+				css = { prettier },
+				json = { prettier },
 			},
 		},
 	})
@@ -101,6 +140,30 @@ local config = function()
 	lspconfig.clangd.setup({
 		on_attach = on_attach,
 		cmd = { "clangd", "--background-index" },
+	})
+
+	lspconfig.html.setup({
+		on_attach = on_attach,
+	})
+
+	lspconfig.cssls.setup({
+		on_attach = on_attach,
+	})
+
+	lspconfig.ts_ls.setup({
+		on_attach = on_attach,
+	})
+
+	lspconfig.emmet_ls.setup({
+		on_attach = on_attach,
+		filetypes = { "html", "css", "javascript", "javascriptreact", "typescriptreact", "svelte", "vue" },
+		init_options = {
+			html = {
+				options = {
+					["bem.enabled"] = true,
+				},
+			},
+		},
 	})
 end
 

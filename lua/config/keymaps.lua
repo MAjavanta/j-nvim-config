@@ -25,6 +25,8 @@ keymap.set("v", ">", ">gv")
 keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv", { desc = "moves line down in visual selection" })
 keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv", { desc = "moves line up in visual selection" })
 
+--Copy whole file
+keymap.set("n", "yG", "gg0yG")
 --paste over text without writing deleted text to clipboard
 keymap.set({ "n", "v" }, "<leader>d", [["_dP]])
 --deletes character without copying to clipboard

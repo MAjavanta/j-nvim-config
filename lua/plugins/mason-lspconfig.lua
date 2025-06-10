@@ -2,8 +2,9 @@ local opts = {
 	ensure_installed = {
 		"efm",
 		"lua_ls",
+		"pyright",
 	},
-	automatic_installation = true
+	automatic_installation = true,
 }
 
 return {
