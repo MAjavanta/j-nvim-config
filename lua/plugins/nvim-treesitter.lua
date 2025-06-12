@@ -1,12 +1,9 @@
 local config = function()
 	require("nvim-treesitter.configs").setup({
-        modules = {},
-        ignore_install = {},
-        sync_install = false,
+		modules = {},
+		ignore_install = {},
+		sync_install = false,
 		indent = {
-			enable = true,
-		},
-		autotag = {
 			enable = true,
 		},
 		ensure_installed = {
@@ -17,10 +14,10 @@ local config = function()
 			"dockerfile",
 			"c",
 			"html",
-            "javascript",
-            "typescript",
-            "tsx",
-            "css"
+			"javascript",
+			"typescript",
+			"tsx",
+			"css",
 		},
 		auto_install = true,
 		highlight = {
@@ -28,10 +25,12 @@ local config = function()
 			additional_vim_regex_highlighting = true,
 		},
 	})
+
+	require("nvim-ts-autotag").setup()
 end
 
 return {
-	'nvim-treesitter/nvim-treesitter',
+	"nvim-treesitter/nvim-treesitter",
 	lazy = false,
 	config = config,
 }
