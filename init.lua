@@ -20,6 +20,9 @@ opt.signcolumn = "yes"
 opt.cursorline = true
 opt.scrolloff = 7
 opt.colorcolumn = "110"
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldcolumn = "1"
 
 opt.incsearch = true
 opt.ignorecase = true
