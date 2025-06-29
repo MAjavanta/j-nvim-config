@@ -137,6 +137,10 @@ local config = function()
 		},
 	})
 
+	lspconfig.pyright.setup({
+		on_attach = on_attach,
+	})
+
 	lspconfig.clangd.setup({
 		on_attach = on_attach,
 		cmd = { "clangd", "--background-index" },
